@@ -1,0 +1,96 @@
+/* Container for the departments section */
+.departments-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header actions with buttons */
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-department {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .bulk-upload {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .add-department:hover {
+    background-color: #45a049;
+  }
+  
+  .bulk-upload:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Table styling */
+  .departments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .departments-table th,
+  .departments-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .departments-table th {
+    background-color: #f1f1f1;
+  }
+  
+  .departments-table td button {
+    margin: 0 5px;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .update {
+    background-color: #ffc107;
+    color: white;
+  }
+  
+  .delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .view:hover {
+    background-color: #138496;
+  }
+  
+  .update:hover {
+    background-color: #e0a800;
+  }
+  
+  .delete:hover {
+    background-color: #c82333;
+  }
+  

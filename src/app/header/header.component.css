@@ -1,0 +1,25 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+
+}
+
+.search input{
+    height: 25px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.user-profile {
+    height: 32px;
+    width: 32px;
+    margin: 20px;
+}
