@@ -13,7 +13,7 @@ export class DepartmentService {
   constructor() { }
 
   getDepartments(): Observable<Department[]> {
-    const credentials = 'admin:password'; // Replace with actual credentials
+    const credentials = 'admin:password';
     const base64Credentials = btoa(credentials); // Encode to Base64
     
     // Set the Authorization header
