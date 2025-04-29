@@ -1,4 +1,7 @@
 .department-container {
+
+}
+.department-container {
     padding: 20px;
     background-color: #f9f9f9;
   }
@@ -30,6 +33,7 @@
 .department-actions {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: 20px;
     margin: 5px;
 }
@@ -70,7 +74,7 @@ margin-right: 5px;
   display: flex;
   margin-left: auto;
   align-items: center;
-  width: 320px;
+  width: 200px;
   height: 30px;
   border-radius: 5px;
 }
