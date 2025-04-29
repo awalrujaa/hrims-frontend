@@ -1,0 +1,12 @@
+
+ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px
+}
+
+.logo {
+    margin-right: auto;
+}
