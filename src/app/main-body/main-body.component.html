@@ -16,12 +16,19 @@
     </a>
 
     <input class="search" type="text" placeholder="Search" />
-    <a
+    <!-- <a
       routerLink="/add-department"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
       ><button class="btn download">Download</button>
-    </a>
+    </a> -->
+    <button mat-icon-button [matTooltip]="'Download Excel'">
+      <mat-icon style="color: green">description</mat-icon>
+    </button>
+
+    <button mat-icon-button [matTooltip]="'Download CSV'">
+      <mat-icon>download</mat-icon>
+    </button>
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

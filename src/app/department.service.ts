@@ -3,6 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Department } from './department.model';
 
+interface CreateDepartmentResponse {
+  code: number;
+  status: string;
+  message: string;
+  data: Department;
+  errors: any[];
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -24,5 +31,16 @@ export class DepartmentService {
     return this.http.get<any>(this.apiUrl, { headers }).pipe(
       map(response => response.data.data) // Extract the data from the response
     );
+    }
+
+    createDepartment(department: Department): Observable<CreateDepartmentResponse> {
+      const credentials = 'admin:password';
+      const base64Credentials = btoa(credentials); // Encode to Base64
+      
+      const headers = new HttpHeaders({
+        'Authorization': 'Basic ' + base64Credentials, // Add Basic Auth header
+      });
+  
+      return this.http.post<CreateDepartmentResponse>(this.apiUrl, department, { headers });
     }
 }

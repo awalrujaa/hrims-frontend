@@ -1,31 +1,70 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { provideHttpClient } from '@angular/common/http';
+import { MatPaginatorModule, MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { DepartmentService } from '../department.service';
 import { Department } from '../department.model';
 
 @Component({
   selector: 'app-list-departments',
-  imports: [CommonModule, MatTableModule, MatPaginatorModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, RouterLink, RouterLinkActive],
   templateUrl: './list-departments.component.html',
   styleUrl: './list-departments.component.css'
 })
 export class ListDepartmentsComponent implements OnInit {
 
-  departments: Department[] = [];
   displayedColumns: string[] = ['id', 'name', 'code', 'actions'];
-  errorMessage!: string;
+  dataSource = new MatTableDataSource<any>();
+  pageSize = 4;
+  pageNumber = 0;
+  totalElements = 0;
 
-  constructor(private departmentService: DepartmentService) {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-    this.departmentService.getDepartments().subscribe({
-      next: (data) => this.departments = data,
-      error: (err) => console.error('Failed to load departments', err)
+  // constructor(private departmentService: DepartmentService) {}
+
+  // ngOnInit(): void {
+  //   this.departmentService.getDepartments().subscribe({
+  //     next: (data) => this.departments = data,
+  //     error: (err) => console.error('Failed to load departments', err)
+  //   });
+  // }
+  ngOnInit() {
+    this.fetchDepartments(this.pageNumber, this.pageSize);
+  }
+
+  fetchDepartments(pageNum: number, pageSize: number) {
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa('admin:password')
     });
+  
+    this.http
+      .get<any>(
+        `http://localhost:8080/api/departments?pageNum=${pageNum}&pageSize=${pageSize}`,
+        { headers }
+      )
+      .subscribe({
+        next: (response) => {
+          this.dataSource.data = response.data.data;
+          this.totalElements = response.data.totalElements;
+          this.pageNumber = response.data.pageNumber;
+          this.pageSize = response.data.pageSize;
+        },
+        error: (err) => {
+          console.error('API error', err);
+        }
+      });
+  }
+
+  onPageChange(event: PageEvent) {
+    this.fetchDepartments(event.pageIndex, event.pageSize);
   }
 
 }
