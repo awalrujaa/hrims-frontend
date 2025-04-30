@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { provideHttpClient } from '@angular/common/http';
+
 import { DepartmentService } from '../department.service';
 import { Department } from '../department.model';
 
