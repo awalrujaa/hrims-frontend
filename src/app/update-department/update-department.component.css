@@ -1,0 +1,40 @@
+.update-department {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.icons {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 25px;
+}
+
+.arrow_back {
+    margin-right: 250px;
+}
+
+.update-department input{
+    height: 20px;
+    width: 320px;
+    padding: 10px;
+    margin: 10px;
+    border: 0.5px solid rgb(126, 120, 120);
+    border-radius: 5px;
+}
+
+.btn {
+    width: 160px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
