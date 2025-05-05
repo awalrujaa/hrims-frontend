@@ -30,11 +30,13 @@
       ><button class="btn download">Download</button>
     </a> -->
     <button mat-icon-button [matTooltip]="'Download Excel'">
-      <mat-icon style="color: green">description</mat-icon>
+      <mat-icon (click)="downloadExcel()" style="color: green"
+        >description</mat-icon
+      >
     </button>
 
     <button mat-icon-button [matTooltip]="'Download CSV'">
-      <mat-icon>download</mat-icon>
+      <mat-icon (click)="downloadCSV()">download</mat-icon>
     </button>
   </div>
 

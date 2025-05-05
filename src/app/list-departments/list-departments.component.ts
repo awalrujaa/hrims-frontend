@@ -76,4 +76,57 @@ export class ListDepartmentsComponent implements OnInit {
       });
     }
   }
+
+  downloadCSV(): void {
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa('admin:password'), // add auth if needed
+    });
+  
+    this.http
+      .get('http://localhost:8080/api/departments/download-csv', {
+        headers,
+        responseType: 'blob', // important for file download
+      })
+      .subscribe({
+        next: (blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'departments.csv';
+          a.click();
+          window.URL.revokeObjectURL(url);
+        },
+        error: (err) => {
+          console.error('Download failed:', err);
+        },
+      });
+  }
+  isDownloading = false;
+
+  downloadExcel(): void {
+    this.isDownloading = true;
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa('admin:password'),
+    });
+  
+    this.http.get('http://localhost:8080/api/departments/download-excel', {
+      headers,
+      responseType: 'blob',
+    }).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'departments.xlsx';
+        a.click();
+        window.URL.revokeObjectURL(url);
+        this.isDownloading = false;
+      },
+      error: (err) => {
+        console.error('Download failed:', err);
+        this.isDownloading = false;
+      },
+    });
+  }
+  
 }
