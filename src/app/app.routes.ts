@@ -10,7 +10,7 @@ export const routes: Routes = [
     {path: 'add-department', component: AddDepartmentComponent},
     {path: 'add-bulk-department', component: BulkDepartmentComponent},
     {path: 'list-departments', component: ListDepartmentsComponent},
-    {path: 'view-department', component: ViewDepartmentComponent},
-    {path: 'update-department', component: UpdateDepartmentComponent},    
+    {path: 'view-department/:id', component: ViewDepartmentComponent},
+    {path: 'update-department/:id', component: UpdateDepartmentComponent},    
 
 ];

@@ -7,6 +7,7 @@ import { DepartmentService } from '../department.service';
 import { CommonModule } from '@angular/common';
 
 
+
 @Component({
   selector: 'app-add-department',
   imports: [CommonModule, FormsModule, MatIconModule, RouterLink, RouterLinkActive],
@@ -31,6 +32,8 @@ export class AddDepartmentComponent {
       (response) => {
         if (response.code === 200) {
           this.message = response.status;
+          this.departmentName = '';
+          this.departmentCode = '';
           this.error = '';
         } else {
           this.error = 'Failed to create department.';

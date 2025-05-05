@@ -8,14 +8,14 @@
       <mat-icon class="close">close</mat-icon>
     </a>
   </div>
-  <input id="department-name" placeholder="Name" />
-  <input id="department-code" placeholder="Code" />
-  <button class="btn" type="submit">Update</button>
+  <input id="department-name" [(ngModel)]="departmentName" placeholder="Name" />
+  <input id="department-code" [(ngModel)]="departmentCode" placeholder="Code" />
+  <button class="btn" (click)="updateDepartment()" type="submit">Update</button>
 
-  <!-- <div *ngIf="message" class="success-message">
+  <div *ngIf="message" class="success-message">
     {{ message }}
   </div>
   <div *ngIf="error" class="error-message">
     {{ error }}
-  </div> -->
+  </div>
 </div>

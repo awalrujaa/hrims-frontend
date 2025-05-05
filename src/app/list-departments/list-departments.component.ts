@@ -26,7 +26,9 @@ export class ListDepartmentsComponent implements OnInit {
   pageNumber = 0;
   totalElements = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient, 
+    private departmentService: DepartmentService) {}
 
   // constructor(private departmentService: DepartmentService) {}
 
@@ -67,4 +69,11 @@ export class ListDepartmentsComponent implements OnInit {
     this.fetchDepartments(event.pageIndex, event.pageSize);
   }
 
+  deleteDepartment(id: number): void {
+    if (confirm('Are you sure you want to delete this department?')) {
+      this.departmentService.deleteDepartment(id).subscribe(() => {
+        this.fetchDepartments(this.pageNumber, this.pageSize); // refresh list after deletion
+      });
+    }
+  }
 }
