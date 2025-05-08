@@ -1,0 +1,26 @@
+<div class="login-page">
+  <div class="left">
+    <h1>Login</h1>
+    <p>Login to your account.</p>
+    <div>
+      <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label>E-mail Address</label>
+          <input name="email" type="email" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" formControlName="password" />
+        </div>
+      </form>
+      <div>Reset Password?</div>
+    </div>
+    <div class="btn" type="ngSubmit">Log In</div>
+    <div>Don't have an account yet? Join HRIS today.</div>
+  </div>
+  <div class="right">
+    <!-- <div class="right-image"></div> -->
+    <img src="assets/images/login.jpg" />
+    <!-- <div class="overlay">Multi-line <br />text</div> -->
+  </div>
+</div>

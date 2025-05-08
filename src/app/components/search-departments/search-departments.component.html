@@ -1,0 +1,7 @@
+<ul *ngIf="departments?.length" class="department-list">
+  <li *ngFor="let department of departments" class="department-item">
+    <span class="department-id">{{ department.id }}</span>
+    <span class="department-name">{{ department.name }}</span>
+    <span class="department-code">{{ department.code }}</span>
+  </li>
+</ul>

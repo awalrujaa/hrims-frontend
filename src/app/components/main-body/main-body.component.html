@@ -1,0 +1,76 @@
+<div class="department-container">
+  <div class="department-actions">
+    <a
+      routerLink="/add-department"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <button class="btn add-department">Add Department</button>
+    </a>
+    <a
+      routerLink="/add-department"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+    >
+      <button class="btn bulk-upload">Bulk Upload</button>
+    </a>
+
+    <input class="search" type="text" placeholder="Search" />
+    <!-- <a
+      routerLink="/add-department"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      ><button class="btn download">Download</button>
+    </a> -->
+    <button mat-icon-button [matTooltip]="'Download Excel'">
+      <mat-icon style="color: green">description</mat-icon>
+    </button>
+
+    <button mat-icon-button [matTooltip]="'Download CSV'">
+      <mat-icon>download</mat-icon>
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="num">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.num }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef>Code</th>
+      <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" class="table-actions">
+        <a
+          routerLink="/add-department"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <button class="btn view-btn">View</button> </a
+        ><a
+          routerLink="/add-department"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <button class="btn edit-btn">Edit</button> </a
+        ><a
+          routerLink="/add-department"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+        >
+          <button class="btn delete-btn">Delete</button>
+        </a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

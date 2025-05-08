@@ -1,0 +1,12 @@
+<p>bulk-department works!</p>
+<input type="file" (change)="onFileSelected($event)" /><button
+  (click)="uploadFile()"
+>
+  Upload File
+</button>
+<div *ngIf="message" class="success-message">
+  {{ message }}
+</div>
+<div *ngIf="error" class="error-message">
+  {{ error }}
+</div>

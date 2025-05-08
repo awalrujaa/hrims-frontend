@@ -1,0 +1,30 @@
+<div *ngIf="department; else loading">
+  <mat-card class="department-card">
+    <mat-card-header>
+      <mat-card-title>Department Details</mat-card-title>
+    </mat-card-header>
+    <div class="icons">
+      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <mat-icon class="arrow_back">arrow_back</mat-icon>
+      </a>
+      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+        <mat-icon class="close">close</mat-icon>
+      </a>
+    </div>
+    <mat-card-content>
+      <p><strong>ID:</strong> {{ department.id }}</p>
+      <p><strong>Name:</strong> {{ department.name }}</p>
+      <p><strong>Code:</strong> {{ department.code }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loading>
+  <div class="loading-container">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="40"
+    ></mat-progress-spinner>
+    <p>Loading department details...</p>
+  </div>
+</ng-template>
