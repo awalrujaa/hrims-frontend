@@ -9,8 +9,8 @@
 width: 40%;
 display: flex;
 flex-direction: column;
-align-items: center;
-max-width: 400px;
+align-items: left;
+max-width: 95%;
 margin: auto;
 padding: 2rem;
 background-color: #ffffff;

@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
@@ -6,23 +6,20 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  httpClient = inject(HttpClient);
-  baseUrl = 'http://localhost:8080/api/auth';
+  private baseUrl = 'http://localhost:8080/api/auth';
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
 
-  login(data: any) {
+  login(data: { email: string; password: string }) {
     return this.httpClient.post<{ token: string }>(`${this.baseUrl}/login`, data)
-      .pipe(tap((result) => {
-        localStorage.setItem('token', result.token);
-      }));
+      .pipe(tap((result) => localStorage.setItem('token', result.token)));
   }
 
   logout() {
-    localStorage.removeItem('authUser');
+    localStorage.removeItem('token');
   }
 
   isLoggedIn() {
-    return localStorage.getItem('authUser') != null;
+    return !!localStorage.getItem('token');
   }
 }
