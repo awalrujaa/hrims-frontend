@@ -1,24 +1,17 @@
 <nav class="navbar">
-  <ul>
-    <li class="logo">
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
-        >HRIMS</a
-      >
-    </li>
-    <li class="home">
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
-        ><mat-icon>home</mat-icon></a
-      >
-    </li>
-    <li>
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
-        ><mat-icon>notifications</mat-icon>
-      </a>
-    </li>
-    <li>
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"
-        ><mat-icon>account_circle</mat-icon>
-      </a>
-    </li>
-  </ul>
+  <div class="navbar-left">
+    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <img src="assets/images/logo.png" alt="Company Logo" class="logo" />
+    </a>
+  </div>
+  <div class="navbar-right">
+    <button class="clock-in-btn">
+      <mat-icon style="color: rgb(53, 53, 53)">fingerprint</mat-icon>
+      CLOCK IN
+      <p style="color: rgb(0, 0, 0)">{{ currentTime }}</p>
+    </button>
+
+    <mat-icon>notifications</mat-icon>
+    <mat-icon>account_circle</mat-icon>
+  </div>
 </nav>

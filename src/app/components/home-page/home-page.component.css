@@ -1,0 +1,12 @@
+.main-body {
+    display: flex;
+}
+
+.main-body .side-bar {
+    width: 15%;
+    border: 2px solid red;
+}
+
+.main-body .container {
+    width: 85%;
+}
