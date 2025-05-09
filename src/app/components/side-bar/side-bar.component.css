@@ -45,6 +45,20 @@
     height: 18px;
     width: 18px;
   }
+
+  .sidebar {
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100%;
+  }
+
+  
+ 
+  a {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
   /*
   .sidebar-menu a:hover {
     background-color: #34495e;

@@ -14,5 +14,6 @@
   <button class="btn"><mat-icon>assignment</mat-icon>Tasks</button>
   <button class="btn"><mat-icon>library_books</mat-icon>Learning</button>
   <button class="btn">View All Apps</button>
-  <a>Collapse</a>
-</div>
+  <button class="btn" (click)="onToggleSidebar()">
+    <mat-icon>{{ isSidebarCollapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+    {{ isSidebarCollapsed ? 'Expand' : 'Collapse' }}  </button>
