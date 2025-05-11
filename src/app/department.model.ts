@@ -1,5 +1,5 @@
-export interface Department {
-    id?: number;
-    name: string;
-    code: string;
-}
+// export interface Department {
+//     id?: number;
+//     name: string;
+//     code: string;
+// }

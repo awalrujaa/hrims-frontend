@@ -1,0 +1,52 @@
+
+  p {
+    font-size: 1rem;
+    font-weight: 550;
+    
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #5c5c5c;
+    padding: 5px 10px;
+    margin: 5pX;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    /* box-shadow:  2px #838383; */
+
+    /* transition: background-color 0.3s ease; */
+    gap: 8px; /* space between icon and text */
+      
+  }
+  
+
+  .btn mat-icon {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+  }
+
+  .sidebar {
+    padding: 20px;
+    background-color: #f4f4f4;
+    height: 100%;
+  }
+
+  
+ 
+  a {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+  }
+  /*
+  .sidebar-menu a:hover {
+    background-color: #34495e;
+  }
+  
+   */

@@ -26,7 +26,8 @@ export class LoginPageComponent {
       // Cast value since Validators.required ensures non-null
       const loginData = this.loginForm.value as { email: string; password: string };
       this.authService.login(loginData).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => {this.router.navigate(['/admin'])
+        },
         error: () => alert('Login failed. Please check your credentials.')
       });
     }

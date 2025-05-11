@@ -1,1 +1,26 @@
-<p>admin works!</p>
+<div class="home-page">
+  <div class="nav-bar" style="border: 2px solid blue">
+    <app-nav-bar> </app-nav-bar>
+  </div>
+  <div class="main-body">
+    <div
+      class="side-bar-container"
+      [ngClass]="{ collapsed: isSidebarCollapsed }"
+    >
+      <div class="side-bar-content" *ngIf="!isSidebarCollapsed">
+        <app-admin-side-bar
+          [isSidebarCollapsed]="isSidebarCollapsed"
+          (toggleSidebar)="toggleSidebar()"
+        ></app-admin-side-bar>
+      </div>
+      <button class="sidebar-toggle-button" (click)="toggleSidebar()">
+        <mat-icon>{{
+          isSidebarCollapsed ? "chevron_right" : "chevron_left"
+        }}</mat-icon>
+      </button>
+    </div>
+    <div class="container">
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+</div>
