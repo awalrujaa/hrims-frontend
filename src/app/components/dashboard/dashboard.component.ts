@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
   export class DashboardComponent {
     employeeCount: number = 0;
     newJoineeCount: number = 0;
+    retiringCount: number = 0;
     departmentCount: number = 0;
     leaveCount: number = 0;
 
@@ -16,6 +17,7 @@ import { Component } from '@angular/core';
     ngOnInit() {
       this.employeeCount = 40;
       this.newJoineeCount = 1;
+      this.retiringCount = 1;
       this.departmentCount = 5;
       this.leaveCount = 8;
     }

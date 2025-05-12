@@ -1,7 +1,7 @@
-.home-page {
+.admin-page {
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
+
   }
   
   .main-body {
@@ -11,6 +11,7 @@
   
   .side-bar {
     width: 250px;
+    height:100dvh;
     transition: width 0.3s ease;
     border: 2px solid red;
 
@@ -18,17 +19,18 @@
   
   .side-bar.collapsed {
     width: 0;
-    overflow: hidden;
   }
   
   .container {
-    flex: 1;
     transition: all 0.3s ease;
+    width: 100%;
+    overflow-y: scroll;
+
   }
   
-  .container.full-width {
+  /* .container.full-width {
     flex: 1;
-  }
+  } */
 
   .side-bar-container {
     display: flex;

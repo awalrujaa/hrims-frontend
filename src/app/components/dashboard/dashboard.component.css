@@ -1,28 +1,96 @@
-.container {
+.dashboard-container {
     background: #e6f0fa;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
-    height: 100%;
-    border: 1px solid black;
+    /* height: 100%; */
+    padding: 10px;
+    margin: 10px;
+    
+}
 
+.dashboard-title {
+    padding: 10px;
+    margin: 10px;
 }
 
 .summary {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 
 }
 
 .summary-box {
-height: auto;
-width: 6rem;
-border: 1px solid blue;  
-    
+    height: auto;
+    width: 8rem;
+    background: white;
+    border-radius: 5px;
+    padding: 10px; 
+    margin: 10px;   
 }
 
+.summary-box-title {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.summary-box-content {
+    margin: 0px;
+    font-size: 16px;
+}
+
+.container-mid, .container-last {
+    display: flex;
+    width: 100%;
+}
+
+
+.dashboard-card {
+    width: 50%;
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.dashboard-card-width {
+    width: 50%;
+}
+
+.dashboard-card-child {
+    background: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.dashboard-card-title {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.dashboard-card-gender {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.dashboard-card-request {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+/* .dashboard-card-detail {
+    display: flex;
+} */
+/*
 @media (min-width: 1025px) {
     
     .summary{
@@ -35,7 +103,7 @@ border: 1px solid blue;
     }
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+ @media (min-width: 768px) and (max-width: 1024px) {
 .summary {
     color: aqua;
     margin: 0.5rem;
@@ -58,5 +126,5 @@ border: 1px solid blue;
     justify-content: space-around;
     color: rgb(146, 13, 75);
 
-}}
+}} */
 

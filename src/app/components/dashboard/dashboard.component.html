@@ -1,47 +1,57 @@
-<div class="container">
-  <h1>HR Dashboard</h1>
+<div class="dashboard-container">
+  <h1 class="dashboard-title">HR Dashboard</h1>
   <div class="summary">
     <div
-      class="flex flex-col gap-2 p-8 sm:flex-row sm:items-center sm:gap-6 sm:py-4 ..."
+      class="summary-box"
     >
-      <p>{{ employeeCount }}</p>
-      <p>Employees</p>
+      <p class="summary-box-title">{{ employeeCount }}</p>
+      <p class="summary-box-content">Employees</p>
     </div>
     <div class="summary-box">
-      <p>{{ newJoineeCount }}</p>
-      <p>New Joinees</p>
+      <p class="summary-box-title">{{ newJoineeCount }}</p>
+      <p class="summary-box-content">New Joins</p>
+    </div>    
+    <div class="summary-box">
+      <p class="summary-box-title">{{ retiringCount }}</p>
+      <p class="summary-box-content">Retiring</p>
     </div>
     <div class="summary-box">
-      <p>{{ departmentCount }}</p>
-      <p>Departments</p>
+      <p class="summary-box-title">{{ departmentCount }}</p>
+      <p class="summary-box-content">Departments</p>
     </div>
     <div class="summary-box">
-      <p>{{ leaveCount }}</p>
-      <p>Leaves</p>
+      <p class="summary-box-title">{{ leaveCount }}</p>
+      <p class="summary-box-content">Leaves</p>
     </div>
   </div>
   <div class="container-mid">
-    <div>
-      <p>Gender Ratio</p>
-      <div>5 Female</div>
-      <div>4 Male</div>
+    <div class="dashboard-card-width">
+      <div class="dashboard-card-child">
+      <p class="dashboard-card-title">Gender Ratio</p>
+      <div class="dashboard-card-gender"><p>5 Female</p><p>4 Male</p></div>
+      </div>
+      <div class="dashboard-card-child">
+        <p class="dashboard-card-title">New Joins</p>
+        <div class="dashboard-card-detail"><p>John Doe</p></div>
+        </div>
     </div>
-    <div>
-      <p>Pending Requests</p>
-      <p>Leave</p>
-      <p>Allowance</p>
-      <p>Overtime</p>
-      <p>Data Change</p>
+    <div class="dashboard-card">
+      <p class="dashboard-card-title">Pending Requests</p>
+      
+      <div class="dashboard-card-request"><p>Leave</p><p>4</p></div>
+      <div class="dashboard-card-request"><p>Allowance</p><p>2</p></div>
+      <div class="dashboard-card-request"><p>Overtime</p><p>3</p></div>
+      <div class="dashboard-card-request"><p>Data Change</p><p>11</p></div>
     </div>
   </div>
   <div class="container-last">
-    <div>
-      <p>Long Absenteeism</p>
+    <div class="dashboard-card">
+      <p class="dashboard-card-title">Long Absenteeism</p>
       <p>More than 3 days</p>
-      <p>More than days</p>
+      <p>More than 5 days</p>
     </div>
-    <div>
-      <p>Latest Events</p>
+    <div class="dashboard-card">
+      <p class="dashboard-card-title">Latest Events</p>
       <p>Company Anniversary</p>
     </div>
   </div>

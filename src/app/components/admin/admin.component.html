@@ -1,5 +1,5 @@
-<div class="home-page">
-  <div class="nav-bar" style="border: 2px solid blue">
+<div class="admin-page">
+  <div class="nav-bar">
     <app-nav-bar> </app-nav-bar>
   </div>
   <div class="main-body">
@@ -13,11 +13,6 @@
           (toggleSidebar)="toggleSidebar()"
         ></app-admin-side-bar>
       </div>
-      <button class="sidebar-toggle-button" (click)="toggleSidebar()">
-        <mat-icon>{{
-          isSidebarCollapsed ? "chevron_right" : "chevron_left"
-        }}</mat-icon>
-      </button>
     </div>
     <div class="container">
       <router-outlet> </router-outlet>
