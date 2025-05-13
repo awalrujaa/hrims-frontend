@@ -6,14 +6,15 @@
   </div>
   <h1 class="create-department-title">Create Department</h1>
 
-  <input id="department-name" [(ngModel)]="departmentName" placeholder="Name" />
-  <input id="department-code" [(ngModel)]="departmentCode" placeholder="Code" />
+  <input
+    id="department-field"
+    [(ngModel)]="departmentName"
+    placeholder="Name"
+  />
+  <input
+    id="department-field"
+    [(ngModel)]="departmentCode"
+    placeholder="Code"
+  />
   <button class="btn" (click)="createDepartment()" type="submit">Create</button>
-  <!-- Message section -->
-  <div *ngIf="message" class="success-message">
-    {{ message }}
-  </div>
-  <div *ngIf="error" class="error-message">
-    {{ error }}
-  </div>
 </mat-card>

@@ -1,34 +1,30 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterLink } from '@angular/router';
-import { RouterLinkActive } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { MatSort } from '@angular/material/sort';
-
 import { DepartmentService } from '../../service/department.service';
 import { DepartmentSharedService } from '../../service/department-shared.service';
 
 @Component({
-  selector: 'app-list-departments',
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, 
-    RouterLink, FormsModule],
-  templateUrl: './list-departments.component.html',
-  styleUrl: './list-departments.component.css'
+  selector: 'app-list-employees',
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, FormsModule],
+  templateUrl: './list-employees.component.html',
+  styleUrl: './list-employees.component.css'
 })
-export class ListDepartmentsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'code', 'actions'];
+export class ListEmployeesComponent implements OnInit {
+
+  displayedColumns: string[] = ['num', 'name', 'email', 'actions'];
   dataSource = new MatTableDataSource<any>();
   pageSize = 4;
   pageNumber = 0;
   totalElements = 0;
 
-  departments: any[] = [];
+  employees: any[] = [];
 
 
   searchText: string = '';
@@ -39,25 +35,27 @@ export class ListDepartmentsComponent implements OnInit {
     private http: HttpClient, 
     private departmentService: DepartmentService,
     private router: Router, 
-  private departmentSharedService: DepartmentSharedService) {}
+    private departmentSharedService: DepartmentSharedService) {}
 
   ngOnInit() {
-    this.getAllDepartments(this.pageNumber, this.pageSize);
+    this.getAllEmployees(this.pageNumber, this.pageSize);
   }
 
-  getAllDepartments(pageNum: number, pageSize: number) {
+  getAllEmployees(pageNum: number, pageSize: number) {
+    console.log("get all employees");
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + btoa('admin:password')
     });
   
     this.http
       .get<any>(
-        `http://localhost:8080/api/departments?pageNum=${pageNum}&pageSize=${pageSize}`,
+        `http://localhost:8080/api/employees?pageNum=${pageNum}&pageSize=${pageSize}`,
         { headers }
       )
       .subscribe({
         next: (response) => {
-          this.dataSource.data = response.data.data;
+          this.dataSource = response.data.data;
+          console.log(this.dataSource);
           this.totalElements = response.data.totalElements;
           this.pageNumber = response.data.pageNumber;
           this.pageSize = response.data.pageSize;
@@ -69,14 +67,14 @@ export class ListDepartmentsComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
-    this.getAllDepartments(event.pageIndex, event.pageSize);
+    this.getAllEmployees(event.pageIndex, event.pageSize);
   }
 
     deleteDepartment(id: number): void {
     if (confirm(`Are you sure you want to delete this department ${id}?`)) {
       this.departmentService.deleteDepartment(id).subscribe({
                     next: () => {
-                        this.getAllDepartments(this.pageNumber, this.pageSize);
+                        this.getAllEmployees(this.pageNumber, this.pageSize);
                         alert(`Department "Department with ${id}" deleted successfully.`);
                     },
                     error: (error) => {

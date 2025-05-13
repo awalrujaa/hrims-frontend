@@ -12,13 +12,12 @@ import { FormsModule } from '@angular/forms';
 
 
 import { DepartmentService } from '../../service/department.service';
-import { Department } from '../../interface/department-interface';
 import { DepartmentSharedService } from '../../service/department-shared.service';
 
 @Component({
   selector: 'app-list-departments',
   imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, 
-    RouterLink, RouterLinkActive, FormsModule, RouterOutlet],
+    RouterLink, FormsModule, RouterOutlet],
   templateUrl: './department.component.html',
   styleUrl: './department.component.css'
 })
@@ -43,14 +42,6 @@ export class DepartmentComponent implements OnInit {
     private router: Router, 
   private departmentSharedService: DepartmentSharedService) {}
 
-  // constructor(private departmentService: DepartmentService) {}
-
-  // ngOnInit(): void {
-  //   this.departmentService.getDepartments().subscribe({
-  //     next: (data) => this.departments = data,
-  //     error: (err) => console.error('Failed to load departments', err)
-  //   });
-  // }
   ngOnInit() {
     this.getAllDepartments(this.pageNumber, this.pageSize);
   }
@@ -149,7 +140,7 @@ getFilteredDepartments(searchText: string): void {
       this.departments = data.data;
       this.departmentSharedService.updateDepartments(this.departments);
       if (searchText && searchText.trim()) {
-        this.router.navigate(['/search-department'], {
+        this.router.navigate(['/admin/department/search-department'], {
           queryParams: { query: searchText }
         });
       }

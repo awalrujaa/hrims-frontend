@@ -8,8 +8,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 
-
-
 @Component({
   selector: 'app-add-department',
   imports: [CommonModule, FormsModule, MatIconModule, RouterLink, MatCardModule],
@@ -47,6 +45,8 @@ export class AddDepartmentComponent {
       },
       (err) => {
         this.error = 'An error occurred. Please try again.';
+        alert(`${this.error}`);
+
         this.message = '';
       }
     );

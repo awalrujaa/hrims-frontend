@@ -13,6 +13,10 @@ import { PayrollComponent } from './components/payroll/payroll.component';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
 import { BulkDepartmentComponent } from './components/bulk-department/bulk-department.component';
+import { SearchDepartmentsComponent } from './components/search-departments/search-departments.component';
+import { ViewDepartmentComponent } from './components/view-department/view-department.component';
+import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
+import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,10 +27,22 @@ export const routes: Routes = [
         { path: '', component: ListDepartmentsComponent },
         { path: 'add-department', component: AddDepartmentComponent },
         { path: 'add-bulk-department', component: BulkDepartmentComponent },
-        // { path: 'add-department', component: AddDepartmentComponent },
+        { path: 'search-department', component: SearchDepartmentsComponent },
+        { path: 'view-department/:id', component: ViewDepartmentComponent },
+        { path: 'update-department/:id', component: UpdateDepartmentComponent },
+
+
       ]},      
     
-      { path: 'employee', component: EmployeeComponent },
+      { path: 'employee', component: EmployeeComponent , children: [
+        { path: '', component: ListEmployeesComponent },
+        { path: 'add-department', component: AddDepartmentComponent },
+        { path: 'add-bulk-department', component: BulkDepartmentComponent },
+        { path: 'search-department', component: SearchDepartmentsComponent },
+        { path: 'view-department/:id', component: ViewDepartmentComponent },
+        { path: 'update-department/:id', component: UpdateDepartmentComponent },
+        ]},
+
       { path: 'leave', component: LeaveComponent },
       { path: 'payroll', component: PayrollComponent },
 

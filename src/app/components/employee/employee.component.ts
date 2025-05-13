@@ -1,41 +1,43 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule, MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLinkActive } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
-
-export interface Departments {
-  num: number;
-  name: string;
-  code: string;
-}
-
-const DEPARTMENT_DATA: Departments[] = [
-  {num: 1, name: 'Human Resources', code: 'HR001'},
-  {num: 2, name: 'Engineering', code: 'ENG12'},
-  {num: 3, name: 'Marketing', code: 'MRKT1'},
-  {num: 4, name: 'Infrastructures', code: 'INFRA'},
-];
 
 
 @Component({
   selector: 'app-employee',
-  imports: [CommonModule, MatTableModule, MatIconModule, MatTooltipModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, 
+    RouterLink, FormsModule, RouterOutlet],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
 
 
 export class EmployeeComponent {
-  displayedColumns: string[] = ['num', 'name', 'code', 'actions'];
-  dataSource = new MatTableDataSource(DEPARTMENT_DATA);
 
-  @ViewChild(MatSort)
-  sort: MatSort = new MatSort;
+  displayedColumns: string[] = ['id', 'name', 'code', 'actions'];
+  dataSource = new MatTableDataSource<any>();
+  pageSize = 4;
+  pageNumber = 0;
+  totalElements = 0;
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
+  departments: any[] = [];
+
+
+  searchText: string = '';
+
+
+
+  constructor(
+    private http: HttpClient, 
+    private router: Router){}
+
 }

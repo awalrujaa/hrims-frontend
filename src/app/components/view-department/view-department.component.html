@@ -1,16 +1,12 @@
 <div *ngIf="department; else loading">
-  <mat-card class="department-card">
-    <mat-card-header>
-      <mat-card-title>Department Details</mat-card-title>
-    </mat-card-header>
+  <mat-card class="view-department-card">
     <div class="icons">
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-        <mat-icon class="arrow_back">arrow_back</mat-icon>
-      </a>
-      <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-        <mat-icon class="close">close</mat-icon>
-      </a>
+      <mat-icon class="close" [routerLink]="['/admin/department']"
+        >close</mat-icon
+      >
     </div>
+    <h1 class="view-department-title">Create Department</h1>
+
     <mat-card-content>
       <p><strong>ID:</strong> {{ department.id }}</p>
       <p><strong>Name:</strong> {{ department.name }}</p>

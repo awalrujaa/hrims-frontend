@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ApiResponse } from '../../interface/department-interface';
 import { Router, RouterLink } from '@angular/router';
 
 

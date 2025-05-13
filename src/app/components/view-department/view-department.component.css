@@ -1,24 +1,30 @@
-.department-card {
-    margin: 20px auto;
-    max-width: 400px;
-    padding: 16px;
-  }
-  
-  .loading-container {
+.view-department-card {
+    width: 40%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
-    color: #666;
+    background: white;
+    margin: 10px;
+    padding: 10px;
   }
+  
+  .view-department-title {
+    margin: 10px;
+    padding: 10px;
 
-  .icons {
+}
+
+.icons {
     display: flex;
-    justify-content: space-evenly;
     margin-bottom: 25px;
+    justify-content: flex-end;
 }
 
-.arrow_back {
-    margin-right: 250px;
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  color: #666;
 }
+
   
