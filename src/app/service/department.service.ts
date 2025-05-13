@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Department } from '../interface/department-interface';
-import { HttpClientModule } from '@angular/common/http';
 import { CreateDepartmentResponse } from '../interface/department-interface';
 
 

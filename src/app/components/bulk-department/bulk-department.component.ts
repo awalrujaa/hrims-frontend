@@ -1,58 +1,72 @@
-// import { Component } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { ApiResponse } from '../../interface/department-interface';
+import { Router, RouterLink } from '@angular/router';
 
 
-// @Component({
-//   selector: 'app-bulk-department',
-//   imports: [CommonModule],
-//   templateUrl: './bulk-department.component.html',
-//   styleUrl: './bulk-department.component.css'
-// })
-// export class BulkDepartmentComponent {
+@Component({
+  selector: 'app-bulk-department',
+  imports: [CommonModule, MatCardModule, MatIconModule, MatButtonModule, RouterLink],
+  templateUrl: './bulk-department.component.html',
+  styleUrl: './bulk-department.component.css'
+})
 
-//   message: string = '';
-//   error: string = '';
+export class BulkDepartmentComponent {
+    router = inject(Router);
+    selectedFile: File | null = null;
+    selectedFileName: string | null = null;
+    message: string = '';
+    error: string = '';
 
-//   selectedFile: File | null = null;
-//   constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length) {
+      this.selectedFile = input.files[0];
+      this.selectedFileName = this.selectedFile.name;
+      this.message = '';
+      this.error = '';
+    }
+  }
 
-// onFileSelected(event: Event): void {
-//     const input = event.target as HTMLInputElement;
-//     if (input.files && input.files.length > 0) {
-//         this.selectedFile = input.files[0];
-//     }
-// }
+  uploadFile(): void {
+    if (!this.selectedFile) {
+      this.error = 'Please select a file.';
+      return;
+    }
 
-// uploadFile(): void {
-//   if (!this.selectedFile) {
-//     this.error = 'Please select a file before uploading.';
-//       return;
-//   }
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
 
-//   const formData = new FormData();
-//   formData.append('file', this.selectedFile);
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + btoa('admin:password'),
+    });
 
-//   const credentials = 'admin:password';
-//   const base64Credentials = btoa(credentials); // Encode to Base64
-  
-//   const headers = new HttpHeaders({
-//     'Authorization': 'Basic ' + base64Credentials, // Add Basic Auth header
-//   });
-
-//   this.http.post('http://localhost:8080/api/departments/excel-upload', formData, { headers })
-//   .subscribe({
-//     next: (response) => {
-//       this.message = 'File uploaded successfully.';
-//       this.error = '';
-//       console.log('Upload success:', response);
-//     },
-//     error: (err) => {
-//       this.error = 'File upload failed.';
-//       this.message = '';
-//       console.error('Upload error:', err);
-//     }
-//   });
-// }
-// }
+    this.http
+      .post('http://localhost:8080/api/departments/excel-upload', formData, { headers })
+      .subscribe({
+        next: (res: any) => {
+          if (res.code === 200 || res.status === 'OK') {
+            
+            this.router.navigate(['/admin/department']);
+            alert("File uploaded and Created Successfully");
+            this.message = 'File uploaded successfully.';
+            this.error = '';
+          } else {
+            this.error = res.errors?.[0] || 'File upload failed.';
+            this.message = '';
+          }
+        },
+        error: (err) => {
+          this.error =
+            err.error?.errors?.[0] || err.message || 'File upload failed due to an unknown error.';
+          this.message = '';
+        },
+      });
+  }
+}

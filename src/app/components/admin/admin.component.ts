@@ -8,7 +8,7 @@ import { AdminSideBarComponent } from '../admin-side-bar/admin-side-bar.componen
 
 @Component({
   selector: 'app-admin',
-  imports: [RouterOutlet, NavBarComponent, SideBarComponent, CommonModule, MatIconModule, AdminSideBarComponent],
+  imports: [RouterOutlet, NavBarComponent, CommonModule, MatIconModule, AdminSideBarComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })

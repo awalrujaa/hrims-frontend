@@ -23,18 +23,18 @@ import { Department } from '../../interface/department-interface';
   styleUrl: './list-departments.component.css'
 })
 export class ListDepartmentsComponent implements OnInit {
-
   displayedColumns: string[] = ['id', 'name', 'code', 'actions'];
-  dataSource = new MatTableDataSource<Department>();
-  pageSize: number = 4;
-  pageNumber: number = 0;
-  totalElements: number = 0;
-  @ViewChild(MatSort) sort!: MatSort;
+  dataSource = new MatTableDataSource<any>();
+  pageSize = 4;
+  pageNumber = 0;
+  totalElements = 0;
 
+  departments: any[] = [];
 
-  departments: Department[] = [];
 
   searchText: string = '';
+
+
 
   constructor(
     private http: HttpClient, 
@@ -42,137 +42,43 @@ export class ListDepartmentsComponent implements OnInit {
     private router: Router, 
   private departmentSharedService: DepartmentSharedService) {}
 
-  // constructor(private departmentService: DepartmentService) {}
-
-  // ngOnInit(): void {
-  //   this.departmentService.getDepartments().subscribe({
-  //     next: (data) => this.departments = data,
-  //     error: (err) => console.error('Failed to load departments', err)
-  //   });
-  // }
   ngOnInit() {
-    this.fetchDepartments(this.pageNumber, this.pageSize);
-    this.dataSource.sort = this.sort;
+    this.getAllDepartments(this.pageNumber, this.pageSize);
   }
 
-  fetchDepartments(pageNum: number, pageSize: number) {
-    try {
-      // Retrieve JWT token (e.g., from localStorage or an auth service)
-      const token = localStorage.getItem('jwtToken');
-      if (!token) {
-        console.error('No JWT token found. Redirecting to login...');
-        // Optionally redirect to login page
-        this.router.navigate(['/login']);
-        return;
-      }
-      
-      const headers = new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json'
-        });
-  
-        this.http
-        .get<any>(
-            `http://localhost:8080/api/departments?pageNum=${pageNum}&pageSize=${pageSize}`,
-            { headers }
-        )
-        .subscribe({
-            next: (response) => {
-            this.dataSource.data = response.data.data;
-            this.totalElements = response.data.totalElements;
-            this.pageNumber = response.data.pageNumber;
-            this.pageSize = response.data.pageSize;
-            },
-            error: (err) => {
-            console.error('API error', err);
-            }
-      });
-    }
-      catch (err) {
-      console.error('Failed to fetch departments:', err);
-    }
-  }
-
-  onPageChange(event: PageEvent) {
-    this.fetchDepartments(event.pageIndex, event.pageSize);
-  }
-
-  deleteDepartment(id: number): void {
-    if (confirm('Are you sure you want to delete this department?')) {
-      this.departmentService.deleteDepartment(id).subscribe(() => {
-        this.fetchDepartments(this.pageNumber, this.pageSize); // refresh list after deletion
-      });
-    }
-  }
-
-  downloadCSV(): void {
+  getAllDepartments(pageNum: number, pageSize: number) {
     const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa('admin:password'), // add auth if needed
+      Authorization: 'Basic ' + btoa('admin:password')
     });
   
     this.http
-      .get('http://localhost:8080/api/departments/download-csv', {
-        headers,
-        responseType: 'blob', // important for file download
-      })
+      .get<any>(
+        `http://localhost:8080/api/departments?pageNum=${pageNum}&pageSize=${pageSize}`,
+        { headers }
+      )
       .subscribe({
-        next: (blob) => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'departments.csv';
-          a.click();
-          window.URL.revokeObjectURL(url);
+        next: (response) => {
+          this.dataSource.data = response.data.data;
+          this.totalElements = response.data.totalElements;
+          this.pageNumber = response.data.pageNumber;
+          this.pageSize = response.data.pageSize;
         },
         error: (err) => {
-          console.error('Download failed:', err);
-        },
+          console.error('API error', err);
+        }
       });
   }
-  isDownloading = false;
 
-  downloadExcel(): void {
-    this.isDownloading = true;
-    const headers = new HttpHeaders({
-      Authorization: 'Basic ' + btoa('admin:password'),
-    });
-  
-    this.http.get('http://localhost:8080/api/departments/download-excel', {
-      headers,
-      responseType: 'blob',
-    }).subscribe({
-      next: (blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'departments.xlsx';
-        a.click();
-        window.URL.revokeObjectURL(url);
-        this.isDownloading = false;
-      },
-      error: (err) => {
-        console.error('Download failed:', err);
-        this.isDownloading = false;
-      },
-    });
+  onPageChange(event: PageEvent) {
+    this.getAllDepartments(event.pageIndex, event.pageSize);
   }
-  
-getFilteredDepartments(searchText: string): void {
-  console.log('Searching for:', searchText);
-  this.departmentService.filterDepartments(searchText).subscribe({
-    next: (data) => {
-      this.departments = data.data;
-      this.departmentSharedService.updateDepartments(this.departments);
-      if (searchText && searchText.trim()) {
-        this.router.navigate(['/search-department'], {
-          queryParams: { query: searchText }
-        });
-      }
-    },
-    error: (err) => {
-      console.error('Error fetching departments', err);
+
+    deleteDepartment(id: number): void {
+    if (confirm('Are you sure you want to delete this department?')) {
+      this.departmentService.deleteDepartment(id).subscribe(() => {
+        this.getAllDepartments(this.pageNumber, this.pageSize); // refresh list after deletion
+      });
     }
-  });
-}
+  }
 
 }

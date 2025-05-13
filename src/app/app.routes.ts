@@ -10,16 +10,26 @@ import { DepartmentComponent } from './components/department/department.componen
 import { EmployeeComponent } from './components/employee/employee.component';
 import { LeaveComponent } from './components/leave/leave.component';
 import { PayrollComponent } from './components/payroll/payroll.component';
+import { AddDepartmentComponent } from './components/add-department/add-department.component';
+import { ListDepartmentsComponent } from './components/list-departments/list-departments.component';
+import { BulkDepartmentComponent } from './components/bulk-department/bulk-department.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginPageComponent},
     {path: 'admin', component: AdminComponent, canActivate: [authGuard], children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'department', component: DepartmentComponent },
+      { path: 'department', component: DepartmentComponent, children: [
+        { path: '', component: ListDepartmentsComponent },
+        { path: 'add-department', component: AddDepartmentComponent },
+        { path: 'add-bulk-department', component: BulkDepartmentComponent },
+        // { path: 'add-department', component: AddDepartmentComponent },
+      ]},      
+    
       { path: 'employee', component: EmployeeComponent },
       { path: 'leave', component: LeaveComponent },
       { path: 'payroll', component: PayrollComponent },
+
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]},
     { path: 'home', component: HomePageComponent, children: [

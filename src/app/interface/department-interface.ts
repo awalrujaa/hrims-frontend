@@ -21,4 +21,14 @@ export interface DepartmentApiResponse {
   };
 }
 
+export interface ApiResponse<T = any> {
+  code: number;
+  status: string;
+  message: string;
+  timeStamp: string;
+  data: T;
+  errors: string[];
+}
+
+
 

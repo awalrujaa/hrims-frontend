@@ -1,13 +1,11 @@
-<div class="create-department">
-  <h1>Create Department</h1>
+<mat-card class="create-department">
   <div class="icons">
-    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="arrow_back">arrow_back</mat-icon>
-    </a>
-    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">
-      <mat-icon class="close">close</mat-icon>
-    </a>
+    <mat-icon class="close" [routerLink]="['/admin/department']"
+      >close</mat-icon
+    >
   </div>
+  <h1 class="create-department-title">Create Department</h1>
+
   <input id="department-name" [(ngModel)]="departmentName" placeholder="Name" />
   <input id="department-code" [(ngModel)]="departmentCode" placeholder="Code" />
   <button class="btn" (click)="createDepartment()" type="submit">Create</button>
@@ -18,4 +16,4 @@
   <div *ngIf="error" class="error-message">
     {{ error }}
   </div>
-</div>
+</mat-card>
