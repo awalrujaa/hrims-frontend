@@ -29,16 +29,22 @@
 
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef class="column-code">Actions</th>
-      <td mat-cell *matCellDef="let department" class="table-actions">
-        <button class="action-btn view-btn">
+      <td mat-cell *matCellDef="let employee" class="table-actions">
+        <button
+          class="action-btn view-btn"
+          [routerLink]="['view-employee', employee.id]"
+        >
           <mat-icon>visibility</mat-icon>
         </button>
-        <button class="action-btn edit-btn">
+        <button
+          class="action-btn edit-btn"
+          [routerLink]="['update-employee', employee.id]"
+        >
           <mat-icon>edit</mat-icon>
         </button>
         <button
           class="action-btn delete-btn"
-          (click)="deleteDepartment(department.id)"
+          (click)="deleteDepartment(employee.id)"
         >
           <mat-icon>delete</mat-icon>
         </button>

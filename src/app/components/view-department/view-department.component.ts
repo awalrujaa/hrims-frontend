@@ -6,12 +6,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { RouterLinkActive } from '@angular/router';
 
 
 @Component({
   selector: 'app-view-department',
-  imports: [CommonModule, MatCardModule, MatProgressSpinnerModule, MatIconModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, MatCardModule, MatProgressSpinnerModule, MatIconModule, RouterLink],
   templateUrl: './view-department.component.html',
   styleUrl: './view-department.component.css'
 })

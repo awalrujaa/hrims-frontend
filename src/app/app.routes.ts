@@ -17,13 +17,18 @@ import { SearchDepartmentsComponent } from './components/search-departments/sear
 import { ViewDepartmentComponent } from './components/view-department/view-department.component';
 import { UpdateDepartmentComponent } from './components/update-department/update-department.component';
 import { ListEmployeesComponent } from './components/list-employees/list-employees.component';
+import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { BulkEmployeeComponent } from './components/bulk-employee/bulk-employee.component';
+import { SearchEmployeeComponent } from './components/search-employee/search-employee.component';
+import { ViewEmployeeComponent } from './components/view-employee/view-employee.component';
+import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/login', pathMatch: 'full'},
     {path: 'login', component: LoginPageComponent},
     {path: 'admin', component: AdminComponent, canActivate: [authGuard], children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'department', component: DepartmentComponent, children: [
+        { path: 'dashboard', component: DashboardComponent },
+        { path: 'department', component: DepartmentComponent, children: [
         { path: '', component: ListDepartmentsComponent },
         { path: 'add-department', component: AddDepartmentComponent },
         { path: 'add-bulk-department', component: BulkDepartmentComponent },
@@ -31,16 +36,15 @@ export const routes: Routes = [
         { path: 'view-department/:id', component: ViewDepartmentComponent },
         { path: 'update-department/:id', component: UpdateDepartmentComponent },
 
-
       ]},      
     
       { path: 'employee', component: EmployeeComponent , children: [
         { path: '', component: ListEmployeesComponent },
-        { path: 'add-department', component: AddDepartmentComponent },
-        { path: 'add-bulk-department', component: BulkDepartmentComponent },
-        { path: 'search-department', component: SearchDepartmentsComponent },
-        { path: 'view-department/:id', component: ViewDepartmentComponent },
-        { path: 'update-department/:id', component: UpdateDepartmentComponent },
+        { path: 'add-employee', component: AddEmployeeComponent },
+        { path: 'add-bulk-employee', component: BulkEmployeeComponent },
+        { path: 'search-employee', component: SearchEmployeeComponent },
+        { path: 'view-employee/:id', component: ViewEmployeeComponent },
+        { path: 'update-employee/:id', component: UpdateEmployeeComponent },
         ]},
 
       { path: 'leave', component: LeaveComponent },
@@ -55,12 +59,5 @@ export const routes: Routes = [
       { path: '', redirectTo: 'main', pathMatch: 'full' }
     ]},
       { path: '**', redirectTo: '/login' }
-
-    // {path: 'add-department', component: AddDepartmentComponent},
-    // {path: 'add-bulk-department', component: BulkDepartmentComponent},
-    // {path: 'list-departments', component: ListDepartmentsComponent},
-    // {path: 'view-department/:id', component: ViewDepartmentComponent},
-    // {path: 'update-department/:id', component: UpdateDepartmentComponent},
-    // {path: 'search-department', component: SearchDepartmentsComponent},
     
 ];

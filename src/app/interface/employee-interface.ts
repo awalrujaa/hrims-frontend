@@ -21,3 +21,20 @@ export interface Role {
     name: string;
     description: string;
 }
+
+export interface CreateEmployeeResponse {
+  code: number;
+  status: string;
+  message: string;
+  data: Employee;
+  errors: any[];
+}
+
+export interface EmployeeApiResponse {
+  data: {
+    data: Employee[];
+    totalElements: number;
+    pageNumber: number;
+    pageSize: number;
+  };
+}

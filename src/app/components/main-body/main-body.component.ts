@@ -8,7 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-main-body',
-  imports: [MatTableModule, RouterLink, RouterLinkActive, MatIconModule, MatTooltipModule],
+  imports: [MatTableModule, MatIconModule, MatTooltipModule],
   templateUrl: './main-body.component.html',
   styleUrl: './main-body.component.css'
 })

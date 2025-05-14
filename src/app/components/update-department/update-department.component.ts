@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, ActivatedRoute, Router, RouterLinkActive } from '@angular/router';
+import { RouterLink, ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DepartmentService } from '../../service/department.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-update-department',
-  imports: [MatCardModule, MatIconModule, RouterLink, RouterLinkActive, FormsModule, CommonModule],
+  imports: [MatCardModule, MatIconModule, RouterLink, FormsModule, CommonModule],
   templateUrl: './update-department.component.html',
   styleUrl: './update-department.component.css'
 })

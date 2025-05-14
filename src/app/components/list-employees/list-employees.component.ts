@@ -12,7 +12,7 @@ import { DepartmentSharedService } from '../../service/department-shared.service
 
 @Component({
   selector: 'app-list-employees',
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, FormsModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatIconModule, MatTooltipModule, FormsModule, RouterLink],
   templateUrl: './list-employees.component.html',
   styleUrl: './list-employees.component.css'
 })

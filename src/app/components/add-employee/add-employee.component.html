@@ -1,0 +1,49 @@
+<mat-card class="create-employee">
+  <div class="icons">
+    <mat-icon class="close" [routerLink]="['/admin/employee']">close</mat-icon>
+  </div>
+  <h1 class="create-employee-title">Create Employee</h1>
+
+  <input id="employee-first-name" [(ngModel)]="firstName" placeholder="Name" />
+  <input
+    id="employee-middle-name"
+    [(ngModel)]="middleName"
+    placeholder="Code"
+  />
+  <input id="employee-last-name" [(ngModel)]="lastName" placeholder="Name" />
+  <input id="employee-email" [(ngModel)]="email" placeholder="Code" />
+  <input id="employee-phone" [(ngModel)]="phone" placeholder="Name" />
+  <input
+    id="employee-date-of-birth"
+    [(ngModel)]="dateOfBirth"
+    placeholder="Code"
+  />
+  <input id="employee-blood-group" [(ngModel)]="firstName" placeholder="Name" />
+  <input
+    id="employee-middle-name"
+    [(ngModel)]="middleName"
+    placeholder="Code"
+  />
+  <input id="employee-first-name" [(ngModel)]="firstName" placeholder="Name" />
+  <input
+    id="employee-middle-name"
+    [(ngModel)]="middleName"
+    placeholder="Code"
+  />
+  <button class="btn" type="submit">Create</button>
+  <div>
+    <div>
+      <ul>
+        <li>Personal Details</li>
+        <li>Contact Details</li>
+        <li>Job Details</li>
+      </ul>
+    </div>
+    <div>
+      <h1>Personal Details</h1>
+      <div></div>
+    </div>
+    <div>Contact Details</div>
+    <div>Job Details</div>
+  </div></mat-card
+>
