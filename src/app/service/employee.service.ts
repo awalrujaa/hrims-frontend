@@ -31,6 +31,10 @@ export class EmployeeService {
     return this.http.post<CreateEmployeeResponse>(this.apiUrl, employee, { headers: this.headers });
 
   }
+
+  addEmployee(employee: any): Observable<any> {
+    return this.http.post(this.apiUrl, employee);
+  }
        
         //    getDepartmentById(id: number): Observable<any> {
        
