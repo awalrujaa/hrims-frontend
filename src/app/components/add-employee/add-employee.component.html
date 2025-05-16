@@ -1,9 +1,8 @@
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
   <h2>Add Employee</h2>
 
-  <!-- Personal Details -->
   <div>
-    <label>First Name:</label>
+    <label>First Name</label>
     <input formControlName="firstName" required />
     <div
       *ngIf="
@@ -168,7 +167,7 @@
     <select formControlName="roleType" required>
       <option value="">Select</option>
       <option value="ADMIN">ADMIN</option>
-      <option value="EMPLOYEE">EMPLOYEE</option>
+      <option value="USER">USER</option>
     </select>
     <div
       *ngIf="

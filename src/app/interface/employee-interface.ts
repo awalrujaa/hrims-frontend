@@ -3,17 +3,27 @@ export interface Employee {
     firstName: string;
     middleName: string;
     lastName: string;
-    fullName: string;
     userName: string;
     password: string;
-    role: Role;
+    roleType: string;
     salary: number;
     mobileNumber: string;
     email: string;
-    dateOfBirth: number;
+    dateOfBirth: string;
     bloodGroup: string;
-    dateOfJoining: number;
-    departmendId: number;
+    dateOfJoining: string;
+    departmentId: number;
+    addressList: Address[];
+}
+
+export interface Address {
+  id?:number;
+  street: string;
+  city: string;
+  state: string;
+  zipcode: string;
+  country: string;
+  type: string;
 }
 
 export interface Role {
